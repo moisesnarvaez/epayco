@@ -1,0 +1,9 @@
+{
+  "status": true,
+  "message": "El plan ha sido creado exitosamente",
+  "data": {
+    "status": "Creado",
+    "user": "cdc4654c502f9d320ebet4f6230m669d",
+    "id": "test"
+  }
+}

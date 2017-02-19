@@ -11,7 +11,6 @@ module EPayCo
       :adapter,
       :connection_options,
       :endpoint,
-      :format,
       :proxy,
       :user_agent
     ].freeze
@@ -35,22 +34,11 @@ module EPayCo
     # @note There is no reason to use any other endpoint at this time
     DEFAULT_ENDPOINT = 'https://api.secure.payco.co/'.freeze
 
-    # The response format appended to the path and sent in the 'Accept' header if none is set
-    #
-    # @note JSON is the only available format at this time
-    DEFAULT_FORMAT = :json
-
     # By default, don't use a proxy server
     DEFAULT_PROXY = nil
 
     # The user agent that will be sent to the API endpoint if none is set
     DEFAULT_USER_AGENT = "EPayCo Ruby Gem #{EPayCo::VERSION}".freeze
-
-    # An array of valid request/response formats
-    #
-    # @note Not all methods support the XML format.
-    VALID_FORMATS = [
-      :json].freeze
 
     # @private
     attr_accessor *VALID_OPTIONS_KEYS
@@ -79,7 +67,6 @@ module EPayCo
       self.adapter            = DEFAULT_ADAPTER
       self.connection_options = DEFAULT_CONNECTION_OPTIONS
       self.endpoint           = DEFAULT_ENDPOINT
-      self.format             = DEFAULT_FORMAT
       self.proxy              = DEFAULT_PROXY
       self.user_agent         = DEFAULT_USER_AGENT
     end

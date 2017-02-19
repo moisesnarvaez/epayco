@@ -1,31 +1,53 @@
 require File.expand_path('../../../spec_helper', __FILE__)
 
 describe EPayCo::Client do
-  EPayCo::Configuration::VALID_FORMATS.each do |format|
-    context ".new(:format => '#{format}')" do
-      before do
-        public_key  = '111111111111111'
-        private_key = '222222222222222'
-        @client = EPayCo::Client.new(:format => format, :public_key => public_key, :private_key => private_key)
-      end
+  let(:public_key){ '111111111111111' }
+  let(:private_key){ '222222222222222' }
+  let(:client) { EPayCo::Client.new(:public_key => public_key, :private_key => private_key) }
 
-      describe ".user_search" do
-
-        # before do
-        #   stub_get("users/search.#{format}").
-        #     with(:query => {:access_token => @client.access_token}).
-        #     with(:query => {:q => "Shayne Sweeney"}).
-        #     to_return(:body => fixture("user_search.#{format}"), :headers => {:content_type => "application/#{format}; charset=utf-8"})
-        # end
-
-        it "should return all the plans" do
-          @client.plan_all
-          # a_get("users/search.#{format}").
-          #   with(:query => {:access_token => @client.access_token}).
-          #   with(:query => {:q => "Shayne Sweeney"}).
-          #   should have_been_made
-        end
-      end
+  describe ".plan_all" do
+    before do
+      stub_get("recurring/v1/plans/#{public_key}").
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        to_return(:status => 200, :body => fixture("plan_all.json"), :headers => {:content_type => "application/json;"})
+      @plans = client.plan_all
     end
+
+    it { expect(a_get("recurring/v1/plans/#{public_key}")).to have_been_made }
+    it { expect(@plans).to be_an(Array) }
+    it { expect(@plans.size).to eq 1 }
+    it { expect(@plans.first.id_plan).to eq "test" }
+  end
+
+  describe ".plan_create" do    
+    let(:plan_params) { {
+      id_plan: "test", name: "Test", description: "Plan de prueba", amount: 30,
+      currency: "USD", interval: "year", interval_count: 1, trial_days: 0
+    } }
+
+    before do
+      stub_post("recurring/v1/plan/create").
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        to_return(:status => 200, :body => fixture("plan_create.json"), :headers => {:content_type => "application/json;"})
+      @response = client.plan_create(plan_params)
+    end
+
+    it { expect(a_post("recurring/v1/plan/create")).to have_been_made }
+    it { expect(@response).to be_an(Hashie::Mash) }
+    it { expect(@response.status).to be_truthy }
+  end
+
+  describe ".plan_details" do
+    let(:plan_id) { "test" }
+    before do
+      stub_get("recurring/v1/plan/#{public_key}/#{plan_id}").
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        to_return(:status => 200, :body => fixture("plan_details.json"), :headers => {:content_type => "application/json;"})
+      @plan = client.plan_details(plan_id)
+    end
+
+    it { expect(a_get("recurring/v1/plan/#{public_key}/#{plan_id}")).to have_been_made }
+    it { expect(@plan).to be_an(Hash) }
+    it { expect(@plan.id_plan).to eq "test" }
   end
 end

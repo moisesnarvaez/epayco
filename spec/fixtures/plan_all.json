@@ -1,0 +1,18 @@
+{
+  "status": true,
+  "object": "plans",
+  "plans": [
+    {
+      "id_plan": "test",
+      "object": "plan",
+      "name": "Test",
+      "description": "Plan de prueba",
+      "amount": 30,
+      "currency": "usd",
+      "interval": "year",
+      "status": "active",
+      "trialDays": 0,
+      "created": "19-02-2017"
+    }
+  ]
+}

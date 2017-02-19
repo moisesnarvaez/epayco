@@ -18,7 +18,8 @@ require 'pry'
 
 RSpec.configure do |config|
   config.include WebMock::API
-  WebMock.allow_net_connect!
+  # IMPORTANT: DO NOT uncomment this, unless you want to unleash the Darkness.
+  # WebMock.allow_net_connect!
 end
 
 def capture_output(&block)

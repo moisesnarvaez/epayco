@@ -33,8 +33,8 @@ describe EPayCo::Client do
     end
 
     it { expect(a_post("recurring/v1/plan/create")).to have_been_made }
-    it { expect(@response).to be_an(Hashie::Mash) }
-    it { expect(@response.status).to be_truthy }
+    it { expect(@response).to be_a(Hashie::Mash) }
+    it { expect(@response.status).to eq "Creado" }
   end
 
   describe ".plan_details" do
@@ -49,5 +49,23 @@ describe EPayCo::Client do
     it { expect(a_get("recurring/v1/plan/#{public_key}/#{plan_id}")).to have_been_made }
     it { expect(@plan).to be_an(Hash) }
     it { expect(@plan.id_plan).to eq "test" }
+  end
+
+  describe ".plan_update" do
+    let(:plan_id) { "test" }
+    let(:plan_params) { {
+      id_plan: "test", name: "Prueba", description: "Plan de prueba", amount: 30,
+      currency: "USD", interval: "year", interval_count: 1, trial_days: 0
+    } }
+    before do
+      stub_put("recurring/v1/plan/edit/#{public_key}/#{plan_id}").
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        to_return(:status => 200, :body => fixture("plan_update.json"), :headers => {:content_type => "application/json;"})
+      @response = client.plan_update(plan_id, plan_params)
+    end
+
+    it { expect(a_put("recurring/v1/plan/edit/#{public_key}/#{plan_id}")).to have_been_made }
+    it { expect(@response).to be_a(Hashie::Hash) }
+    it { expect(@response.status).to eq "Actualizado" }
   end
 end

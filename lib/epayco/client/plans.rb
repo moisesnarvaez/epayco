@@ -39,7 +39,7 @@ module EPayCo
         get(path, params, response_options)
       end
 
-      # Returns all the Plans registered
+      # Creates a new plan
       #
       # @format :json
       # @param options The Plan Attributes
@@ -54,26 +54,35 @@ module EPayCo
       # @return [Hashie::Mash]
       # @example Sucess
       #   {
-      #     "status": true,
-      #     "message": "El plan ha sido creado exitosamente",
-      #     "data": {
-      #       "status": "Creado",
-      #       "user": "cdc4654c502f9d320ebet4f6230m669d",
-      #       "id": "test"
-      #     }
+      #     "status": "Creado",
+      #     "user": "cdc4654c502f9d320ebet4f6230m669d",
+      #     "id": "test"
       #   }
       # @example Fail
       #   {
-      #     "status": false,
-      #     "message": "El id del plan ya existe",
-      #     "data": {
-      #       "status": "error",
-      #       "description": "El id del mensaje es existente o ya no esta en uso id: test"
-      #     }
+      #     "status": "error",
+      #     "description": "El id del mensaje es existente o ya no esta en uso id: test"
       #   }
       def plan_create(options={})
         path = "/recurring/v1/plan/create"
         post(path, options.merge(public_key: public_key))
+      end
+
+      # Updates a new plan
+      #
+      # @format :json
+      # @param plan_id [String] Plan ID (nombre único para identificar el plan)
+      # @param fields [Hash] Clave y valor de los campos a editar
+      # @return [Hashie::Mash]
+      # @example Sucess
+      #   {
+      #     "status": "Actualizado",
+      #     "userId": "4378g0ebb84536876540407bzb04815n",
+      #     "planId": "test"
+      #   }
+      def plan_update(plan_id, fields={})
+        path = "/recurring/v1/plan/edit/#{public_key}/#{plan_id}"
+        put(path, fields)
       end
 
       # Returns the details of a plan

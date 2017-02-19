@@ -1,0 +1,9 @@
+{
+    "status": true,
+    "message": "plan actualizado",
+    "data": {
+        "status": "Actualizado",
+        "userId": "5c4773856f296c674685209bbfd11f92",
+        "planId": "test"
+    }
+}

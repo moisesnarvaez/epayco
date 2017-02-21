@@ -52,7 +52,7 @@ module EPayCo
       # @option options [Integer] :interval_count Especifica la cantidad de intervalos por ejemplo si interval = “month” y interval_count es igual a 2 se cobrará cada 2 meses
       # @option options [Integer] :trial_days Numero de dias que se podrán probar tus servicios antes del cobro, su valor inicial es 0
       # @return [Hashie::Mash]
-      # @example Sucess
+      # @example Success
       #   {
       #     "status": "Creado",
       #     "user": "cdc4654c502f9d320ebet4f6230m669d",
@@ -75,7 +75,7 @@ module EPayCo
       # @param plan_id [String] Plan ID (nombre único para identificar el plan)
       # @param fields [Hash] Clave y valor de los campos a editar
       # @return [Hashie::Mash]
-      # @example Sucess
+      # @example Success
       #   {
       #     "status": "Actualizado",
       #     "userId": "4378g0ebb84536876540407bzb04815n",

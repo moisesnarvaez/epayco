@@ -1,0 +1,52 @@
+{
+  "success": true,
+  "object": "subscriptions",
+  "plans": [
+    {
+      "_id": "wAzyX9Sutm3BaLxM2",
+      "idPlan": "cursocarpinteria2",
+      "data": {
+        "_id": "LS5L9cRaJSWA4ykeM",
+        "idClient": "cursocarpinteria2",
+        "name": "Curso de carpintería2",
+        "description": "En este curso aprenderás carpintería2",
+        "amount": 30000,
+        "currency": "cop",
+        "interval": "month",
+        "clientId": "5c4773856f296c674685209bbfd11f92",
+        "status": "active",
+        "trialDays": 30,
+        "createdAt": "2016-09-27T15:29:38.772Z"
+      },
+      "periodStart": "2016-09-27T15:59:46.339Z",
+      "periodEnd": "2016-11-26T15:59:46.339Z",
+      "status": "active",
+      "idUser": "5c4773856f296c674685209bbfd11f92",
+      "idCustomer": "6eba2u73ZBh49Po7q",
+      "createdAt": "2016-09-27T15:59:46.352Z"
+    },
+    {
+      "_id": "cZHvGKHxJDd8oY72m",
+      "idPlan": "cursocarpinteria2",
+      "data": {
+        "_id": "LS5L9cRaJSWA4ykeM",
+        "idClient": "cursocarpinteria2",
+        "name": "Curso de carpintería2",
+        "description": "En este curso aprenderás carpintería2",
+        "amount": 30000,
+        "currency": "cop",
+        "interval": "month",
+        "clientId": "5c4773856f296c674685209bbfd11f92",
+        "status": "active",
+        "trialDays": 30,
+        "createdAt": "2016-09-27T15:29:38.772Z"
+      },
+      "periodStart": "2016-09-27T16:49:59.758Z",
+      "periodEnd": "2016-11-26T16:49:59.758Z",
+      "status": "active",
+      "idUser": "5c4773856f296c674685209bbfd11f92",
+      "idCustomer": "cus_97dn6u3OFeeeOye",
+      "createdAt": "2016-09-27T16:49:59.767Z"
+    }
+  ]
+}

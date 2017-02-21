@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "object": "subscription",
+  "id": "wAzyX9Sutm3BaLxM2",
+  "created": "Sep 27, 2016 10:59 AM",
+  "current_period_start": "Sep 27, 2016 10:59 AM",
+  "current_period_end": "Nov 26, 2016 10:59 AM",
+  "customer": "6eba2u73ZBh49Po7q",
+  "message": "Suscripción creada",
+  "data": {
+    "id_plan": "cursocarpinteria2",
+    "name": "Curso de carpintería2",
+    "description": "En este curso aprenderás carpintería2",
+    "amount": 30000,
+    "currency": "cop",
+    "interval": "month",
+    "status": "active",
+    "trialDays": 30,
+    "createdAt": "Sep 27, 2016 10:59 AM"
+  },
+  "status": "active"
+}

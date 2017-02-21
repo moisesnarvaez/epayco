@@ -8,5 +8,6 @@ module EPayCo
     Dir[File.expand_path('../client/*.rb', __FILE__)].each{|f| require f}
 
     include EPayCo::Client::Plans
+    include EPayCo::Client::Subscription
   end
 end

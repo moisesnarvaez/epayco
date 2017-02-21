@@ -65,7 +65,8 @@ module EPayCo
       #   }
       def plan_create(options={})
         path = "/recurring/v1/plan/create"
-        post(path, options.merge(public_key: public_key))
+        response_options = { return_object: 'data' }
+        post(path, options.merge(public_key: public_key), response_options)
       end
 
       # Updates a new plan
@@ -82,7 +83,8 @@ module EPayCo
       #   }
       def plan_update(plan_id, fields={})
         path = "/recurring/v1/plan/edit/#{public_key}/#{plan_id}"
-        put(path, fields)
+        response_options = { return_object: 'data' }
+        put(path, fields, response_options)
       end
 
       # Returns the details of a plan

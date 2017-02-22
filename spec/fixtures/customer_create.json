@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "message": "El cliente ha sido creado con exito para realizar operaciones y enlazarlo use el id: ",
+  "data": {
+    "status": "Creado",
+    "description": "El cliente ha sido creado con exito para realizar operaciones y enlazarlo use el id: 6eba2u73ZBh49Po7q",
+    "customerId": "6eba2u73ZBh49Po7q",
+    "token": "ZdTo2WFZEH9r3HC7N"
+  }
+}

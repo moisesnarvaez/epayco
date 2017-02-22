@@ -9,5 +9,6 @@ module EPayCo
 
     include EPayCo::Client::Plans
     include EPayCo::Client::Subscription
+    include EPayCo::Client::Customer
   end
 end

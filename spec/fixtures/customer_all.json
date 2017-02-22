@@ -1,0 +1,22 @@
+{
+  "status": true,
+  "object": "customers",
+  "customers": [
+    {
+      "id_customer": "PKEMb9wfxQjttGeP",
+      "object": "customer",
+      "name": "Juan Fernando",
+      "email": "cliente1@epayco.com",
+      "phone": "3333333",
+      "created": "21-10-2016"
+    },
+    {
+      "id_customer": "qRTGGssNKXZo2Q6pL",
+      "object": "customer",
+      "name": "Pedro Jaramillo",
+      "email": "cliente2@epayco.com",
+      "phone": "3333333",
+      "created": "21-10-2016"
+    }
+  ]
+}

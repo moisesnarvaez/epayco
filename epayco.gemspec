@@ -20,15 +20,8 @@ Gem::Specification.new do |s|
   s.cert_chain  = ['certs/gem-public_cert.pem']
   s.signing_key = File.expand_path("~/.gem/gem-private_key.pem") if $0 =~ /gem\z/
 
-  # TODO: Update to the last stable gem versions
-  s.add_development_dependency('rake', '~> 0.9.2.2')
-  s.add_development_dependency('rspec', '~> 2.4')
-  s.add_development_dependency('webmock', '~> 1.6')
-  s.add_development_dependency('bluecloth', '~> 2.2.0')
-  s.add_development_dependency('pry', '~> 0.10.4')
-  s.add_development_dependency('yard', '~> 0.9.8')
-  s.add_runtime_dependency( 'faraday', '~> 0.11.0')
+  s.add_runtime_dependency('faraday', '~> 0.11.0')
   s.add_runtime_dependency('faraday_middleware', '~> 0.11.0.1')
-  s.add_runtime_dependency('multi_json', '>= 1.0.3', '~> 1.0')
-  s.add_runtime_dependency('hashie',  '>= 0.4.0')
+  s.add_runtime_dependency('multi_json', '~> 1.12')
+  s.add_runtime_dependency('hashie', '~> 3.5')
 end

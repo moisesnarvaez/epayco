@@ -9,4 +9,5 @@ log/*
 .yardoc
 doc/*
 certs/
+coverage/
 .todo

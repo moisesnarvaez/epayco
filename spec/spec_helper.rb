@@ -14,7 +14,6 @@ require File.expand_path('../../lib/epayco', __FILE__)
 
 require 'rspec'
 require 'webmock/rspec'
-require 'pry'
 
 RSpec.configure do |config|
   config.include WebMock::API

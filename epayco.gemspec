@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.cert_chain  = ['certs/gem-public_cert.pem']
-  s.signing_key = File.expand_path("~/.gem/gem-private_key.pem") if $0 =~ /gem\z/
+  s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
 
   s.add_runtime_dependency('faraday', '~> 0.11.0')
   s.add_runtime_dependency('faraday_middleware', '~> 0.11.0.1')

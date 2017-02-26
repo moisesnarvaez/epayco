@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "message": "El charge ha sido creado con exito",
+  "data": {
+    "status": "Creado",
+    "description": "El charge ha sido creado con exito",
+    "customerId": "6eba2u73ZBh49Po7q",
+    "token": "ZdTo2WFZEH9r3HC7N"
+  }
+}

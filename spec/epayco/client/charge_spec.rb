@@ -1,8 +1,8 @@
 require File.expand_path('../../../spec_helper', __FILE__)
 
 describe EPayCo::Client do
-  let(:public_key){ '111111111111111' }
-  let(:private_key){ '222222222222222' }
+  let(:public_key){ '1111111aaa11111111' }
+  let(:private_key){ '2222222bbb22222222' }
   let(:client) { EPayCo::Client.new(:public_key => public_key, :private_key => private_key) }
 
   # TODO: Make tests for erros
@@ -28,7 +28,7 @@ describe EPayCo::Client do
 
     before do
       stub_post("recurring/v1/charge/create").
-        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("charge_create.json"), :headers => {:content_type => "application/json;"})
       @response = client.charge_create(charge_params)
     end

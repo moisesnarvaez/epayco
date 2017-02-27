@@ -8,7 +8,7 @@ describe EPayCo::Client do
   describe ".subscription_all" do
     before do
       stub_get("recurring/v1/subscriptions/#{public_key}").
-        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("subscription_all.json"), :headers => {:content_type => "application/json;"})
       @subscriptions = client.subscription_all
     end
@@ -28,7 +28,7 @@ describe EPayCo::Client do
 
     before do
       stub_post("recurring/v1/subscription/create").
-        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("subscription_create.json"), :headers => {:content_type => "application/json;"})
       @response = client.subscription_create(subscription_params)
     end
@@ -42,7 +42,7 @@ describe EPayCo::Client do
     let(:subscription_id) { "test" }
     before do
       stub_get("recurring/v1/subscription/#{subscription_id}/#{public_key}").
-        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("subscription_create.json"), :headers => {:content_type => "application/json;"})
       @subscription = client.subscription_details(subscription_id)
     end
@@ -56,7 +56,7 @@ describe EPayCo::Client do
     let(:subscription_id) { "test" }
     before do
       stub_post("recurring/v1/subscription/cancel").
-        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("subscription_cancel.json"), :headers => {:content_type => "application/json;"})
       @response = client.subscription_cancel(subscription_id)
     end

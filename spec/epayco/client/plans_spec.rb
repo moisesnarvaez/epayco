@@ -8,7 +8,7 @@ describe EPayCo::Client do
   describe ".plan_all" do
     before do
       stub_get("recurring/v1/plans/#{public_key}").
-        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("plan_all.json"), :headers => {:content_type => "application/json;"})
       @plans = client.plan_all
     end
@@ -27,7 +27,7 @@ describe EPayCo::Client do
 
     before do
       stub_post("recurring/v1/plan/create").
-        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("plan_create.json"), :headers => {:content_type => "application/json;"})
       @response = client.plan_create(plan_params)
     end
@@ -41,7 +41,7 @@ describe EPayCo::Client do
     let(:plan_id) { "test" }
     before do
       stub_get("recurring/v1/plan/#{public_key}/#{plan_id}").
-        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("plan_details.json"), :headers => {:content_type => "application/json;"})
       @plan = client.plan_details(plan_id)
     end
@@ -59,7 +59,7 @@ describe EPayCo::Client do
     } }
     before do
       stub_put("recurring/v1/plan/edit/#{public_key}/#{plan_id}").
-        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'EPayCo Ruby Gem 0.0.1'}).
+        with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("plan_update.json"), :headers => {:content_type => "application/json;"})
       @response = client.plan_update(plan_id, plan_params)
     end

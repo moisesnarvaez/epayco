@@ -26,7 +26,7 @@ module EPayCo
       #     }
       #   ]
       def customer_all(params={})
-        path = "/recurring/v1/customers/#{public_key}"
+        path = "/payment/v1/customers/#{public_key}"
         response_options = { return_object: true }
         get(path, params, response_options)
       end
@@ -49,7 +49,7 @@ module EPayCo
       #     "token": "ZdTo2WFZEH9r3HC7N"
       #   }
       def customer_create(options={})
-        path = "/recurring/v1/customer/create"
+        path = "/payment/v1/customer/create"
         response_options = { return_object: 'data' }
         post(path, options.merge(public_key: public_key), response_options)
       end

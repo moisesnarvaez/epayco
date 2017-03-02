@@ -7,13 +7,13 @@ describe EPayCo::Client do
 
   describe ".customer_all" do
     before do
-      stub_get("recurring/v1/customers/#{public_key}").
+      stub_get("payment/v1/customers/#{public_key}").
         with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("customer_all.json"), :headers => {:content_type => "application/json;"})
       @customers = client.customer_all
     end
 
-    it { expect(a_get("recurring/v1/customers/#{public_key}")).to have_been_made }
+    it { expect(a_get("payment/v1/customers/#{public_key}")).to have_been_made }
     it { expect(@customers).to be_an(Array) }
     it { expect(@customers.size).to eq 2 }
     it { expect(@customers.first.id_customer).to eq "PKEMb9wfxQjttGeP" }
@@ -30,13 +30,13 @@ describe EPayCo::Client do
     } }
 
     before do
-      stub_post("recurring/v1/customer/create").
+      stub_post("payment/v1/customer/create").
         with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("customer_create.json"), :headers => {:content_type => "application/json;"})
       @response = client.customer_create(customer_params)
     end
 
-    it { expect(a_post("recurring/v1/customer/create")).to have_been_made }
+    it { expect(a_post("payment/v1/customer/create")).to have_been_made }
     it { expect(@response).to be_a(Hashie::Mash) }
     it { expect(@response.status).to eq "Creado" }
   end

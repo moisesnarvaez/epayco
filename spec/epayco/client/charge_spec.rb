@@ -27,13 +27,13 @@ describe EPayCo::Client do
     } }
 
     before do
-      stub_post("recurring/v1/charge/create").
+      stub_post("payment/v1/charge/create").
         with(:headers => {'Accept'=>'application/json; charset=utf-8;', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>"EPayCo Ruby Gem #{EPayCo::VERSION}"}).
         to_return(:status => 200, :body => fixture("charge_create.json"), :headers => {:content_type => "application/json;"})
       @response = client.charge_create(charge_params)
     end
 
-    it { expect(a_post("recurring/v1/charge/create")).to have_been_made }
+    it { expect(a_post("payment/v1/charge/create")).to have_been_made }
     it { expect(@response).to be_a(Hashie::Mash) }
     it { expect(@response.status).to eq "Creado" }
   end

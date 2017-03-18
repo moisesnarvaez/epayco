@@ -12,7 +12,8 @@ module EPayCo
       :connection_options,
       :endpoint,
       :proxy,
-      :user_agent
+      :user_agent,
+      :test_mode
     ].freeze
 
     # By default, don't set a user public key
@@ -40,6 +41,9 @@ module EPayCo
     # The user agent that will be sent to the API endpoint if none is set
     DEFAULT_USER_AGENT = "EPayCo Ruby Gem #{EPayCo::VERSION}".freeze
 
+    # Test param that will be send in the POST requets
+    DEFAULT_TEST_MODE = false
+
     # @private
     attr_accessor *VALID_OPTIONS_KEYS
 
@@ -62,13 +66,14 @@ module EPayCo
 
     # Reset all configuration options to defaults
     def reset
-      self.public_key       = DEFAULT_PUBLIC_KEY
-      self.private_key       = DEFAULT_PRIVATE_KEY
+      self.public_key         = DEFAULT_PUBLIC_KEY
+      self.private_key        = DEFAULT_PRIVATE_KEY
       self.adapter            = DEFAULT_ADAPTER
       self.connection_options = DEFAULT_CONNECTION_OPTIONS
       self.endpoint           = DEFAULT_ENDPOINT
       self.proxy              = DEFAULT_PROXY
       self.user_agent         = DEFAULT_USER_AGENT
+      self.test_mode          = DEFAULT_TEST_MODE
     end
   end
 end

@@ -24,6 +24,8 @@ Make sure to set `EPAYCO_PUBLIC_KEY` and `EPAYCO_PRIVATE_KEY` in your environeme
 ```ruby
 EPayCo.public_key = ENV['EPAYCO_PUBLIC_KEY']
 EPayCo.private_key = ENV['EPAYCO_PRIVATE_KEY']
+EPayCo.test_mode = true # Indicates if the payments requests will be done in Test Mode (default: false)
+
 ```
 
 Multiple tokens or multithreaded usage:

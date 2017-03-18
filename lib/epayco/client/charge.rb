@@ -29,7 +29,7 @@ module EPayCo
       def charge_create(options={})
         path = "/payment/v1/charge/create"
         response_options = { return_object: 'data' }
-        post(path, options.merge(public_key: public_key), response_options)
+        post(path, options.merge(public_key: public_key, test: test_mode), response_options)
       end
     end
   end

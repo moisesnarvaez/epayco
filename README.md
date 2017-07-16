@@ -1,3 +1,5 @@
+#### This is gem is no longer maintained, please refer to this one: [https://github.com/epayco/epayco-ruby](https://github.com/epayco/epayco-ruby)
+
 # EPayCo
 A Gem to interact with [epayco.co](https://epayco.co/) API
 
